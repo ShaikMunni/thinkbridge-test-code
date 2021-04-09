@@ -1,0 +1,63 @@
+<div class="form">
+    <ng-container *ngFor="let product of products.controls; let i = index">
+        <mat-accordion class='accordion'>
+            
+            <mat-icon *ngIf="product.invalid" style="float: right;color: red;">error</mat-icon>
+            <mat-expansion-panel [hideToggle]='true' expanded="false" #panel>
+                <mat-expansion-panel-header style="background-color:#dcdef5">
+                    <div class="col-md-10">
+                        <mat-icon>{{panel.expanded ? 'remove_circle_outline' : 'add_circle_outline' }}</mat-icon>
+                        Product {{i+1}}
+                    </div>
+                    <div class="col-md-1">
+                        <button mat-icon-button (click)="editProduct(product);" matTooltip="Update the product">
+                            <mat-icon >update</mat-icon>
+                        </button>
+                    </div>
+                    <div class="col-md-1" (click)="deleteProduct(product,index)" matTooltip="Delete the product">
+                        <mat-icon >delete</mat-icon>
+                    </div>
+                    <div></div>
+                </mat-expansion-panel-header>
+                <div [formGroup]="product" style="margin-left: 43px;">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="full-width">
+                                <mat-label>Name</mat-label>
+                                <input matInput formControlName="name">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="full-width">
+                                <mat-select name="countryString" [(value)]="selectedCountry" placeholder="Price($)"
+                                    formControlName="price">
+                                    <mat-option [value]="'10'">$10</mat-option>
+                                    <mat-option [value]="'20'">$20</mat-option>
+                                    <mat-option [value]="'30'">$30</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <mat-form-field class="full-width">
+                                <mat-label>Description</mat-label>
+                                <textarea matInput formControlName="description"></textarea>
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </div>
+            </mat-expansion-panel>
+        </mat-accordion>
+    </ng-container>
+</div>
+<div>
+    <button mat-raised-button color="primary" (click)="addProduct()">
+        <mat-icon>add</mat-icon>Add Item
+    </button>
+</div>
+<footer>
+    <button mat-raised-button color="primary" class="next-button" (click)="submit()" [disabled]="inventoryForm.invalid">
+        Next
+    </button>
+</footer>

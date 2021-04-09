@@ -1,0 +1,16 @@
+{
+  "productsList": [
+    {
+      "id": 1,
+      "name": "aaa",
+      "price": "20",
+      "description": "bbb"
+    },
+    {
+      "id": 2,
+      "name": "bbb",
+      "price": "30",
+      "description": "aaaa"
+    }
+  ]
+}

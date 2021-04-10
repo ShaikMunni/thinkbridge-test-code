@@ -66,6 +66,7 @@ export class ProductsComponent implements OnInit {
         this.getProducts();
       },error => {
         alert("Didn't find the product in inventory");
+        this.getProducts();
       }
     )
   }
